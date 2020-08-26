@@ -1,0 +1,28 @@
+﻿@model asm1.ViewModel.TopicTrainer
+
+@{
+    ViewBag.Title = "CreateTopic";
+}
+
+<h2>CreateTopic</h2>
+
+@using (Html.BeginForm("CreateTopic", "TrainerStaff", FormMethod.Post))
+{
+	@Html.AntiForgeryToken();
+	@Html.LabelFor(p => p.Topic.Name)
+	@Html.TextBoxFor(p => p.Topic.Name, new { @class = "form-control" })
+	@Html.ValidationMessageFor(p => p.Topic.Name)
+	@Html.LabelFor(p => p.Topic.Description)
+	@Html.TextBoxFor(p => p.Topic.Description, new { @class = "form-control" })
+	@Html.ValidationMessageFor(p => p.Topic.Description)
+	@Html.LabelFor(p => p.Topic.ApplicationUser.FullName)
+	@Html.DropDownListFor(p => p.Topic.TrainerId, new SelectList(Model.ApplicationUsers, "Id", "FullName"), "Select Trainer",
+		new { @class = "form-control" })
+
+	<input type="submit" value="Submit" class="btn-primary" />
+}
+
+
+<div>
+    @Html.ActionLink("Back to List", "TopicIndex")
+</div>

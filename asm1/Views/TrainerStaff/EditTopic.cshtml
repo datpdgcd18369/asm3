@@ -1,0 +1,27 @@
+﻿@model asm1.ViewModel.TopicTrainer
+
+@{
+    ViewBag.Title = "EditTopic";
+}
+
+<h2>EditTopic</h2>
+
+@using (Html.BeginForm("EditTopic", "TrainerStaff", FormMethod.Post))
+{
+	@Html.HiddenFor(p => p.Topic.Id)
+	@Html.LabelFor(p => p.Topic.Name)
+	@Html.EditorFor(p => p.Topic.Name, new { htmlAttributes = new { @class = "form-control" } })
+	@Html.ValidationMessageFor(p => p.Topic.Name)
+	@Html.LabelFor(p => p.Topic.Description)
+	@Html.EditorFor(p => p.Topic.Description, new { htmlAttributes = new { @class = "form-control" } })
+	@Html.ValidationMessageFor(p => p.Topic.Description)
+	@Html.LabelFor(p => p.Topic.ApplicationUser.FullName)
+	@Html.DropDownListFor(p => p.Topic.TrainerId, new SelectList(Model.ApplicationUsers, "Id", "Name"), "Select Trainer Name",
+		new { @class = "form-control" })
+
+	<input type="submit" value="Submit" class="btn-primary" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "TopicIndex")
+</div>

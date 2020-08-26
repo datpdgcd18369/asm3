@@ -1,0 +1,26 @@
+﻿@model asm1.Models.Category
+
+@{
+    ViewBag.Title = "CreateCategorys";
+}
+
+<h2>CreateCategorys</h2>
+
+@using (Html.BeginForm("CreateCategorys", "TrainerStaff", FormMethod.Post))
+{
+	@Html.AntiForgeryToken();
+	@Html.LabelFor(p => p.Name)
+	@Html.TextBoxFor(p => p.Name, new { @class = "form-control" })
+	@Html.ValidationMessageFor(p => p.Name)
+	@Html.LabelFor(p => p.Descriptions)
+	@Html.TextBoxFor(p => p.Descriptions, new { @class = "form-control" })
+	@Html.ValidationMessageFor(p => p.Descriptions)
+
+
+
+	<input type="submit" value="Submit" class="btn-primary" />
+}
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+

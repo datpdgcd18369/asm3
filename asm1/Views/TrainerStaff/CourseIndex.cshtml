@@ -1,0 +1,39 @@
+﻿@model IEnumerable<asm1.Models.Course>
+
+@{
+    ViewBag.Title = "CourseIndex";
+}
+
+<h2>CourseIndex</h2>
+
+@Html.ActionLink("Create a New product", "CreateCourse")
+<p>
+
+    Title: @Html.TextBox("SearchString") <input type="submit" value="Find" />
+
+</p>
+}
+<table class="table table-bordered">
+    <tr>
+        <th> Name</th>
+        <th> Description</th>
+        <th>Topic </th>
+
+        {
+        <th>Edit Action</th>
+        <th>Delete Action</th>
+        }
+    </tr>
+    @foreach (var p in Model)
+    {
+<tr>
+    <td>@p.Name</td>
+    <td>@p.Description</td>
+    <td>@p.Topic.Name</td>
+
+    {
+    <td>@Html.ActionLink("Edit", "Edit", new { id = p.Id })</td>
+    <td>@Html.ActionLink("Delete", "Delete", new { id = p.Id })</td>
+    }
+</tr>}
+</table>

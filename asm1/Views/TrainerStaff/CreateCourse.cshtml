@@ -1,0 +1,27 @@
+﻿@model asm1.ViewModel.CourseTopicViewModel
+
+@{
+	ViewBag.Title = "CreateCourse";
+}
+
+<h2>CreateCourse</h2>
+
+@using (Html.BeginForm("CreateCourse", "TrainerStaff", FormMethod.Post))
+{
+	@Html.AntiForgeryToken();
+	@Html.LabelFor(p => p. Course.Name)
+	@Html.TextBoxFor(p => p.Course.Name, new { @class = "form-control" })
+	@Html.ValidationMessageFor(p => p.Course.Name)
+	@Html.LabelFor(p => p.Course.Description)
+	@Html.TextBoxFor(p => p.Course.Description, new { @class = "form-control" })
+	@Html.ValidationMessageFor(p => p.Course.Description)
+	@Html.LabelFor(p => p.Course.Topic.Name)
+	@Html.DropDownListFor(p => p.Course.TopicId, new SelectList(Model.Topics, "Id", "Name"), "Select Category Name",
+		new { @class = "form-control" })
+
+	<input type="submit" value="Submit" class="btn-primary" />
+}
+
+<div>
+	@Html.ActionLink("Back to List", "CourseIndex")
+</div>

@@ -1,0 +1,26 @@
+﻿@model asm1.Models.Category
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+     
+
+	@using (Html.BeginForm("Edit", "TrainerStaff", FormMethod.Post))
+	{
+	@Html.HiddenFor(p => p.Id)
+	@Html.LabelFor(p => p.Name)
+	@Html.EditorFor(p => p.Name, new { htmlAttributes = new { @class = "form-control" } })
+	@Html.ValidationMessageFor(p => p.Name)
+	@Html.LabelFor(p => p.Descriptions)
+	@Html.EditorFor(p => p.	Descriptions, new { htmlAttributes = new { @class = "form-control" } })
+	@Html.ValidationMessageFor(p => p.Descriptions)
+	
+
+		<input type="submit" value="Submit" class="btn-primary" />
+	 }
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

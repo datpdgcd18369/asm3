@@ -1,0 +1,27 @@
+﻿@model asm1.ViewModel.CourseTopicViewModel
+
+@{
+    ViewBag.Title = "EditCourse";
+}
+
+<h2>EditCourse</h2>
+
+@using (Html.BeginForm("EditCourse", "TrainerStaff", FormMethod.Post))
+{
+	@Html.HiddenFor(p => p.Course.Id)
+	@Html.LabelFor(p => p.Course.Name)
+	@Html.EditorFor(p => p.Course.Name, new { htmlAttributes = new { @class = "form-control" } })
+	@Html.ValidationMessageFor(p => p.Course.Name)
+	@Html.LabelFor(p => p.Course.Description)
+	@Html.EditorFor(p => p.Course.Description, new { htmlAttributes = new { @class = "form-control" } })
+	@Html.ValidationMessageFor(p => p.Course.Description)
+	@Html.LabelFor(p => p.Course.Topic.Name)
+	@Html.DropDownListFor(p => p.Course.TopicId, new SelectList(Model.Topics, "Id", "Name"), "Select Topic Name",
+		new { @class = "form-control" })
+
+	<input type="submit" value="Submit" class="btn-primary" />
+}
+
+<div>
+    @Html.ActionLink("Back to List", "CourseIndex")
+</div>

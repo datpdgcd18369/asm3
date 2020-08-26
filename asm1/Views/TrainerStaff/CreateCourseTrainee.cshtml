@@ -1,0 +1,27 @@
+﻿@model asm1.Models.CourseTrainee
+
+@{
+    ViewBag.Title = "CreateCourseTrainee";
+}
+
+<h2>CreateCourseTrainee</h2>
+
+@using (Html.BeginForm("CreateCourseCategory", "TrainerStaff", FormMethod.Post))
+{
+	
+	@Html.LabelFor(p => p.Course.Name)
+	@Html.DropDownListFor(p => p.Course.Name, (SelectList)ViewBag.Course1, " ", 
+		new { @class = "form-control" })
+
+	
+	<ul style="list-style-type:none">
+		@foreach (var trainees in ViewBag.trainee)
+        {
+			<li>
+				<input type="checkbox" name="courseID"  value="@trainees.TraineeID" />
+			</li>
+        }
+	</ul>
+	<input type="submit" value="Submit" class="btn-primary" />
+}
+
