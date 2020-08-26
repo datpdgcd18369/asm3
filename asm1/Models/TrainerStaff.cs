@@ -13,6 +13,7 @@ namespace asm1.Models
         public string Name { get; set; }
         public string Phone { get; set; }
         public string UserId { get; set; }
+        public string 123 { get; set; }
         public ApplicationUser User { get; set; }
     }
 }
